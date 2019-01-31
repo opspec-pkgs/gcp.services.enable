@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/opspec-pkgs/gcp.services.enable.svg?branch=master)](https://travis-ci.org/opspec-pkgs/gcp.services.enable)
 
+<img src="icon.svg" alt="icon" height="100px">
+
 # Problem statement
 
 enables a google cloud platform service for a project
