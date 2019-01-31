@@ -1,0 +1,28 @@
+description: enables a google cloud platform service for a project
+inputs:
+  keyFile:
+    string:
+      description: key file for a GCP service account w/ `Service Usage Admin` role
+      isSecret: true
+  service:
+    string:
+      description: name of service to enable
+      constraints: {minLength: 1}
+  projectId:
+    string:
+      description: id of the GCP project service will be enabled for
+      constraints: {minLength: 1}
+name: github.com/opspec-pkgs/gcp.services.enable
+opspec: 0.1.6
+run:
+  container:
+    image: { ref: 'google/cloud-sdk:229.0.0-alpine' }
+    files:
+      /cmd.sh:
+      /keyFile: $(keyFile)
+    cmd: [ /cmd.sh ]
+    envVars:
+      CLOUDSDK_CORE_PROJECT: $(projectId)
+      CLOUDSDK_CORE_DISABLE_PROMPTS: 1
+      service:
+version: 1.0.0
